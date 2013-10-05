@@ -13,5 +13,9 @@ module Theguardian
 		def self.sections
 			Theguardian::Api::Section.new.process
 		end
+
+		def self.item(params)
+			Theguardian::Api::Item.new.process(params)
+		end	
 	end
 end
