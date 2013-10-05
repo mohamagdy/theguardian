@@ -9,5 +9,9 @@ module Theguardian
 			@tag = Theguardian::Api::Tag.new
 			@tag.process(params)
 		end
+
+		def self.sections
+			Theguardian::Api::Section.new.process
+		end
 	end
 end
