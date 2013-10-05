@@ -1,21 +1,19 @@
 module Theguardian
 	class ContentApi	
 		def self.search(params = {})
-			@search = Theguardian::Api::Search.new
-			@search.process(params)
+			Theguardian::Api::Search.process(params)
 		end
 
 		def self.search_tags(params = {})
-			@tag = Theguardian::Api::Tag.new
-			@tag.process(params)
+			Theguardian::Api::Tag.process(params)
 		end
 
 		def self.sections
-			Theguardian::Api::Section.new.process
+			Theguardian::Api::Section.process
 		end
 
 		def self.item(params)
-			Theguardian::Api::Item.new.process(params)
+			Theguardian::Api::Item.process(params)
 		end	
 	end
 end

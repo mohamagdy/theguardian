@@ -1,12 +1,12 @@
 module Theguardian
 	module Api
 		class Item < RecursiveOpenStruct
-			def process(params)
+			def self.process(params)
 				connection = Theguardian::Connection.new(resource: params[:id])
-				self.class.new(connection.get(self.process_params(params)), recurse_over_arrays: true)
+				self.new(connection.get(self.process_params(params)), recurse_over_arrays: true)
 			end
 
-			def process_params(params)
+			def self.process_params(params)
 				theguardian_api_params = { id: params[:id] }
 
 				theguardian_api_params.merge!({ "show-fields" => params[:fields] || "all" }) 

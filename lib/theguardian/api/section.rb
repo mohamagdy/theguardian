@@ -1,12 +1,12 @@
 module Theguardian
 	module Api
 		class Section < RecursiveOpenStruct
-			def process
+			def self.process
 				connection = Theguardian::Connection.new(resource: "sections")
-				self.class.new(connection.get, recurse_over_arrays: true)
+				self.new(connection.get, recurse_over_arrays: true)
 			end
 
-			def process_params(params)
+			def self.process_params(params)
 				params
 			end
 		end

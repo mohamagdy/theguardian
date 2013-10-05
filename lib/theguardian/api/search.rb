@@ -1,11 +1,11 @@
 module Theguardian
 	module Api
 		class Search < RecursiveOpenStruct
-			def process(params = {})
+			def self.process(params = {})
 				connection = Theguardian::Connection.new(resource: "search")
 				params = self.process_params(params)
 
-				self.class.new(connection.get(params), recurse_over_arrays: true)
+				self.new(connection.get(params), recurse_over_arrays: true)
 			end
 
 			def items
@@ -14,7 +14,7 @@ module Theguardian
 				end
 			end
 
-			def process_params(params)
+			def self.process_params(params)
 				theguardian_api_params = { q: params[:q] }
 
 				# Date

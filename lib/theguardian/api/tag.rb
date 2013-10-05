@@ -1,14 +1,14 @@
 module Theguardian
 	module Api
 		class Tag < RecursiveOpenStruct
-			def process(params = {})
+			def self.process(params = {})
 				connection = Theguardian::Connection.new(resource: "tags")
 				params = self.process_params(params)
 
-				self.class.new(connection.get(params), recurse_over_arrays: true)
+				self.new(connection.get(params), recurse_over_arrays: true)
 			end
 
-			def process_params(params)
+			def self.process_params(params)
 				# Query string and tag type
 				theguardian_api_params = { q: params[:q], type: params[:type] }
 
