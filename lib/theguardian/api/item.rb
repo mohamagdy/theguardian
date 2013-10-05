@@ -11,7 +11,7 @@ module Theguardian
 
 				theguardian_api_params.merge!({ "show-fields" => params[:fields] || "all" }) 
 
-				theguardian_api_params
+				theguardian_api_params.reject{ |_, value| value.nil? }
 			end
 		end
 	end

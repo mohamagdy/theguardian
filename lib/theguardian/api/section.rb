@@ -7,7 +7,7 @@ module Theguardian
 			end
 
 			def self.process_params(params)
-				params
+				params.reject{ |_, value| value.nil? }
 			end
 		end
 	end
