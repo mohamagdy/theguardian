@@ -9,7 +9,7 @@ module Theguardian
 			end
 
 			def self.process(params)
-				connection = Theguardian::Connection.new(resource: params[:id])
+				connection = Theguardian::Connection.new(resource: params.delete(:id))
 				self.new(connection.get(self.process_params(params)), recurse_over_arrays: true)
 			end
 
