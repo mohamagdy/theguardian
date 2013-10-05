@@ -1,8 +1,8 @@
 module Theguardian
 	class ContentApi	
 		def self.search(params = {})
-			@search = Theguardian::Api::Search.new(params)
-			@search.process
+			@search = Theguardian::Api::Search.new
+			@search.process(params)
 		end
 	end
 end
