@@ -18,3 +18,4 @@ require "theguardian/connection"
 # TheGuardian API files
 require "theguardian/content_api"
 require "theguardian/api/search"
+require "theguardian/api/tag"
