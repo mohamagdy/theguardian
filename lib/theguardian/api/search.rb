@@ -8,6 +8,12 @@ module Theguardian
 				self.class.new(connection.get(params), recurse_over_arrays: true)
 			end
 
+			def items
+				self.results.map do |result| 
+					Theguardian::Api::Item.new(result.to_h) 
+				end
+			end
+
 			def process_params(params)
 				theguardian_api_params = { q: params[:q] }
 
@@ -29,7 +35,7 @@ module Theguardian
 	 			theguardian_api_params.merge!({ "section" => params[:sections].join(",") }) if params.has_key?(:sections) 
 	 			
 	 			# Shown fields
-	 			theguardian_api_params.merge!({ "show-fields" => params[:tags].join(",") }) if params[:tags]
+	 			theguardian_api_params.merge!({ "show-fields" => params[:fields].join(",") }) if params[:fields]
 	 	
 	 			# Refinements
 	 			theguardian_api_params.merge!({ "show-refinements" => params[:refinements].join(",") }) if params.has_key?(:refinements)
