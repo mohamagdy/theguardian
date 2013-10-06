@@ -10,7 +10,6 @@ module Theguardian
 		def get(params = {})
 			addressable = Addressable::URI.new
 			addressable.query_values = params.merge({ format: "JSON" })
-			p "#{@url}/#{resource}?#{addressable.query}", "==="
 			self.parse(RestClient.get("#{@url}/#{resource}?#{addressable.query}"))
 		end
 
